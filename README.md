@@ -1,8 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## How to run
 
-## Getting Started
-
-First, run the development server:
+To launch the project, please run:
 
 ```bash
 npm run dev
@@ -10,21 +8,37 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+from the root directory, and open `http://localhost:3000`
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The project is build with Next.js framework, with which the initial movies list server-side rendered. The server persists movies lists in LocalStorage.
 
-## Learn More
+### Folder/File structure for Web package
 
-To learn more about Next.js, take a look at the following resources:
+- **api**\
+  The basic fetch API service.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **pages**\
+  The index page page with all movies list and a search functionality, and a [name] page, which could be either `watch-later` or `favorites` lists depending on the navigation item.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **components**\
+  Reusable presentation components.
 
-## Deploy on Vercel
+- **hooks**\
+  The API is requested with custom `use-api` hook, which tracks data, and load/error states. The movies listing also supports infinite scroll pagination functionality.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **lib**\
+  `Watch later` and `Favorites` lists LocalStorage module.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **utils**\
+  Helper functions.
+
+### Testing
+
+- Unit test for `Movie` component and utility functions.
+- Simple Cypress e2e test for movies listing functionality. To run Cypress test, please run `yarn` first from root directory first and than `yarn cypress:open`.
+
+### Technologies used
+
+- Next.js
+- Typescript
+- Jest, React Testing Library, Cypress (with Testing Library module)
